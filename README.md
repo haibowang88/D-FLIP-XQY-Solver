@@ -2,7 +2,7 @@
 
 # Data source
 
-#Compare:
+Compare:
 Input format
 ------------
 
