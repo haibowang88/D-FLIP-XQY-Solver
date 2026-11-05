@@ -128,50 +128,86 @@ Transpose the instance:
     python3 data_prepare.py ... --transpose
 
 
-Compare:
-Input format
-------------
+compare_xqy_solver.py
 
-    number_of_instances
-    x_items x_slots y_items y_slots q_record_count
-    <x_items*x_slots x fixed costs>
-    <y_items*y_slots y fixed costs>
-    q_row q_column coefficient
-    ...
+Compare the feasibility-preserving heuristic:
 
-The flattened Q record indices are one-based.
+    d_flip_xqy_dense_cd
+
+against Gurobi's direct nonconvex MIQP model for the multi-floor
+cross-dock door assignment problem.
+
+The heuristic parameters are configurable from the command line.
+
+Default heuristic settings
+--------------------------
+
+    --heuristic-time-limit 300
+    --heuristic-max-iterations 100000
+    --heuristic-n1 1
+    --heuristic-n2 10
+    --heuristic-sequence-count 150
+    --heuristic-tabu-tenure 5
+    --heuristic-restart-stagnation 5
+    --heuristic-rebuild-interval 100000
+    --heuristic-seed 1
+    --heuristic-random-first
+
+Default Gurobi settings
+-----------------------
+
+    --gurobi-time-limit 7200
+    --gurobi-threads 0
+    --gurobi-seed 1
+    --mip-gap 0
+    NonConvex = 2
+
 
 Requirements
 ------------
 
-Install Gurobi and its Python package, and ensure that a valid license
-is available:
-
     python -m pip install gurobipy
 
-Example
--------
+A valid Gurobi license is required.
 
-Cold-start Gurobi comparison:
+Examples
+--------
 
-    python compare_cd_gurobi.py \
+Run with the default heuristic parameters:
+
+    python compare_xqy_solver.py \
         --input n100m10-1-cd-xqy.txt \
         --heuristic ./d_flip_xqy_dense_cd \
-        --output-dir comparison-n100m10-1
+        --output-dir comparison-default
 
-Use the heuristic assignment as a Gurobi MIP start:
+Change the heuristic parameters:
 
-    python compare_cd_gurobi.py \
+    python compare_xqy_solver.py \
         --input n100m10-1-cd-xqy.txt \
         --heuristic ./d_flip_xqy_dense_cd \
-        --output-dir comparison-n100m10-1-warm \
+        --output-dir comparison-custom \
+        --heuristic-time-limit 200 \
+        --heuristic-max-iterations 100000 \
+        --heuristic-n1 1 \
+        --heuristic-n2 10 \
+        --heuristic-sequence-count 150 \
+        --heuristic-tabu-tenure 5 \
+        --heuristic-restart-stagnation 5 \
+        --heuristic-seed 42
+
+Use the validated heuristic result as a Gurobi MIP start:
+
+    python compare_xqy_solver.py \
+        --input n100m10-1-cd-xqy.txt \
+        --heuristic ./d_flip_xqy_dense_cd \
+        --output-dir comparison-warm \
         --warm-start
 
-Skip the heuristic when an existing heuristic result is supplied:
+Use an existing heuristic result without executing the heuristic:
 
-    python compare_cd_gurobi.py \
+    python compare_xqy_solver.py \
         --input n100m10-1-cd-xqy.txt \
-        --heuristic-result existing-result.txt \
-        --output-dir comparison-existing \
+        --heuristic-result heuristic-result.txt \
         --skip-heuristic \
-        --warm-start
+        --warm-start \
+        --output-dir comparison-existing
