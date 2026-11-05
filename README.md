@@ -11,13 +11,13 @@ After downloading the split files, you could type this:<br>
 copy /b file1 + file2 + file3 + file4 filetogether<br>
 then type:<br>
 gunzip filetogether<br>
-ref:<a href="https://www.researchgate.net/profile/Haibo-Wang/publication/382249951_TRE-June24pdf/data/66941afe3e0edb1e0fe4b219/TRE-June24.pdf">“The Multi-floor Cross-dock Door Assignment Problem: Rising Challenges for the New Trend in Logistics Industry”, Transportation Research Part E: Logistics and Transportation Review, 132, 30-47, 2019</a>
+ref:<a href="https://www.researchgate.net/profile/Haibo-Wang/publication/382249951_TRE-June24pdf/data/66941afe3e0edb1e0fe4b219/TRE-June24.pdf">The Multi-floor Cross-dock Door Assignment Problem: Rising Challenges for the New Trend in Logistics Industry, Transportation Research Part E: Logistics and Transportation Review, 132, 30-47, 2019</a>
 <br>
 # Prepare the input data
 Convert cross-dock fixed-cost and interaction files into the input format
 used by:
 
-    d_flip_xqy_dense_cd
+    d_flip_xqy_dense_cd.exe
   
 
 Mathematical model
