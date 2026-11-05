@@ -3,7 +3,8 @@
 # Data source: Wang, Haibo, 2019, "Multi-floor Cross-docking Instances", https://doi.org/10.18738/T8/LQBTFF, Texas Data Repository, V2
 
 This data sets for multi-floor cross-dock door assignment problems, the size of Q matrix ranges from 1000 by 1000 to 90000 by 90000 <br>
-For each input file, we have two dimensional matrix. For example, n100m10-1-fcx.txt file has a 100 by 100 matrix with the values of fcx.<br>
+For each input file, we have two dimensional matrix. For example, <br>
+n100m10-1-fcx.txt file has a 100 by 100 matrix with the values of fcx.<br>
 n100m10-1-fcy.txt has a 10 by 10 matrix with the values of fcy.<br>
 n100m10-1-qxy.txt has a 1000 by 1000 matrix with the values of qxy.<br>
 There are 10 instances for each problem size and the large instances of 40000 by 40000 and 90000 by 90000 data files will split into multiple files<br>
