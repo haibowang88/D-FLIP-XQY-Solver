@@ -17,8 +17,8 @@ ref:<a href="https://www.researchgate.net/profile/Haibo-Wang/publication/3822499
 Convert cross-dock fixed-cost and interaction files into the input format
 used by:
 
-    d_flip_xqy_dense_cd.cpp
-    d_flip_xqy_sparse_cd.cpp
+    d_flip_xqy_dense_cd
+  
 
 Mathematical model
 ------------------
